@@ -1,0 +1,88 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h2 {
+    text-align: center;
+    color: #007bff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 16px;
+    text-align: center;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for error message */
+p.error, p.success {
+    background-color: rgba(0, 128, 0, 0.2); /* Translucent green initially */
+    color: #008000;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: -50px; /* Move above the container */
+    opacity: 0; /* Initially transparent */
+    transition: margin-top 0.5s ease, opacity 0.5s ease;
+}
+
+p.error{
+	 background-color: rgba(128, 0, 0, 0.2);
+	 color: #800000;
+}
+/* Only show the message if it has content */
+p.error:not(:empty), p.success:not(:empty) {
+	position: absolute;
+	top: 10px;
+    margin-top: 10px; /* Show at the top */
+    opacity: 1;
+}
