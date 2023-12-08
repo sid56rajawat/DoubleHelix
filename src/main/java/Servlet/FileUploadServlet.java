@@ -1,5 +1,6 @@
 package Servlet;
 
+import model.DNACryptography;
 import model.File;
 import model.User;
 import java.io.IOException;
@@ -66,9 +67,10 @@ public class FileUploadServlet extends HttpServlet {
 			fileName = extractFileName(filePart);
 			inputStream = filePart.getInputStream();
 			try {
-				File.upload(fileName, inputStream, User.find(userName));
+				InputStream DNAEncryptedFile = DNACryptography.encode(inputStream,User.getPassword(userName));
+				File.upload(fileName, DNAEncryptedFile, User.find(userName));
 				request.setAttribute("message", "File uploaded successfully");
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				request.setAttribute("message", e);
 			}

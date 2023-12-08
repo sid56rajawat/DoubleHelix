@@ -1,5 +1,6 @@
 package Servlet;
 
+import model.DNACryptography;
 import model.User;
 import model.File;
 import java.io.IOException;
@@ -39,7 +40,8 @@ public class FileDownloadServlet extends HttpServlet {
 		InputStream fileContent = null;
 		try {
 			fileContent = File.download(fileName,User.find(userName));
-		} catch (ClassNotFoundException | SQLException e) {
+			fileContent = DNACryptography.decode(fileContent, User.getPassword(userName));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
